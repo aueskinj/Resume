@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Kimuhu Njuguna - CV</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+            --border: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white; /* Changed to white for PDF */
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto; /* Removed top/bottom margin for PDF */
+            background: white;
+            /* Removed box-shadow for PDF */
+            /* Removed border-radius for PDF */
+        }
+        
+        header {
+            background: var(--primary); /* Simplified gradient for PDF */
+            color: white;
+            padding: 30px; /* Reduced padding for PDF */
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Removed background pattern for PDF */
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        main {
+            padding: 30px; /* Reduced padding for PDF */
+        }
+        
+        .summary {
+            background-color: var(--light);
+            padding: 20px; /* Reduced padding for PDF */
+            margin-bottom: 25px; /* Reduced margin for PDF */
+            border: 1px solid #ddd; /* Border for PDF */
+        }
+        
+        .summary p {
+            font-size: 1rem; /* Reduced font size for PDF */
+            color: var(--dark);
+        }
+        
+        section {
+            margin-bottom: 25px; /* Reduced margin for PDF */
+            page-break-inside: avoid; /* Avoid page breaks inside sections */
+        }
+        
+        h2 {
+            font-size: 1.4rem; /* Reduced font size for PDF */
+            margin-bottom: 15px;
+            color: var(--primary);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 1.2rem; /* Reduced font size for PDF */
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Fixed to 3 columns for PDF */
+            gap: 15px; /* Reduced gap for PDF */
+            margin-top: 15px; /* Reduced margin for PDF */
+        }
+        
+        .competency-card {
+            background-color: white;
+            border: 1px solid #ddd; /* Border for PDF */
+            padding: 15px; /* Reduced padding for PDF */
+        }
+        
+        /* Removed hover effects for PDF */
+        
+        .competency-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px; /* Reduced margin for PDF */
+            font-size: 1.05rem; /* Reduced font size for PDF */
+        }
+        
+        .competency-list {
+            list-style: none;
+        }
+        
+        .competency-list li {
+            margin-bottom: 6px; /* Reduced margin for PDF */
+            display: flex;
+            align-items: center;
+        }
+        
+        .competency-list li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .experiences {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px; /* Reduced gap for PDF */
+        }
+        
+        .experience-card {
+            background-color: white;
+            border: 1px solid #ddd; /* Border for PDF */
+            padding: 15px; /* Reduced padding for PDF */
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Removed hover effects for PDF */
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px; /* Reduced margin for PDF */
+            flex-wrap: wrap;
+        }
+        
+        .company {
+            font-weight: 600;
+            font-size: 1.15rem; /* Reduced font size for PDF */
+            color: var(--primary);
+        }
+        
+        .position {
+            font-style: italic;
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+        
+        .date-location {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .experience-content {
+            margin-top: 8px; /* Reduced margin for PDF */
+        }
+        
+        .experience-content ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .experience-content li {
+            margin-bottom: 6px; /* Reduced margin for PDF */
+            position: relative;
+        }
+        
+        .experience-content li::before {
+            content: "→";
+            color: var(--secondary);
+            position: absolute;
+            left: -20px;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Fixed to 2 columns for PDF */
+            gap: 15px; /* Reduced gap for PDF */
+        }
+        
+        .project-card {
+            background-color: white;
+            border: 1px solid #ddd; /* Border for PDF */
+            padding: 15px; /* Reduced padding for PDF */
+            border-top: 4px solid var(--accent);
+            height: 100%;
+        }
+        
+        /* Removed hover effects for PDF */
+        
+        .project-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px; /* Reduced margin for PDF */
+            font-size: 1.05rem; /* Reduced font size for PDF */
+        }
+        
+        .project-description {
+            font-size: 0.9rem; /* Reduced font size for PDF */
+        }
+        
+        .education-certifications {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Fixed to 3 columns for PDF */
+            gap: 15px; /* Reduced gap for PDF */
+        }
+        
+        .education-card, .certification-card {
+            background-color: white;
+            border: 1px solid #ddd; /* Border for PDF */
+            padding: 15px; /* Reduced padding for PDF */
+            border-top: 4px solid var(--primary);
+            height: 100%;
+        }
+        
+        /* Removed hover effects for PDF */
+        
+        .education-title, .certification-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.05rem; /* Reduced font size for PDF */
+        }
+        
+        .institution, .certification-issuer {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .education-date, .certification-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .leadership {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Fixed to 2 columns for PDF */
+            gap: 15px; /* Reduced gap for PDF */
+        }
+        
+        .leadership-card {
+            background-color: white;
+            border: 1px solid #ddd; /* Border for PDF */
+            padding: 15px; /* Reduced padding for PDF */
+            border-top: 4px solid #9b59b6;
+            height: 100%;
+        }
+        
+        /* Removed hover effects for PDF */
+        
+        .leadership-title {
+            font-weight: 600;
+            color: #9b59b6;
+            margin-bottom: 5px;
+            font-size: 1.05rem; /* Reduced font size for PDF */
+        }
+        
+        .leadership-org {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .leadership-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 8px; /* Reduced margin for PDF */
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 15px; /* Reduced padding for PDF */
+            page-break-inside: avoid; /* Avoid page breaks inside footer */
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            margin-bottom: 8px; /* Reduced margin for PDF */
+        }
+        
+        .footer-content a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            section {
+                page-break-inside: avoid;
+            }
+            
+            /* Page break controls */
+            .page-break-before {
+                page-break-before: always;
+            }
+            
+            /* Ensure links are visible in print */
+            a {
+                text-decoration: none !important;
+            }
+            
+            .social-links a::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                font-weight: normal;
+            }
+        }
+        
+        /* Media query adjusted for better PDF conversion */
+        @media (max-width: 768px) {
+            .competencies {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects, .education-certifications, .leadership {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .date-location {
+                align-items: flex-start;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Austin Kimuhu Njuguna</h1>
+                <div class="social-links">
+                    <a href="https://github.com/aueskinj" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/austine-kimuhu" target="_blank">LinkedIn</a>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 11.5A2.5 2.5 0 0 1 9.5 9 2.5 2.5 0 0 1 12 6.5 2.5 2.5 0 0 1 14.5 9a2.5 2.5 0 0 1-2.5 2.5M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z"/>
+                        </svg>
+                        Nairobi, Kenya
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        austinkmhi@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        +254 113 764 478
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <section class="summary">
+                <p>As a results-driven Business Analyst with a strong foundation in economics, mathematics, and data science, I am passionate about leveraging my technical skills to solve complex business problems. I have successfully automated workflows, built predictive models, and implemented process improvements in both the public and private sectors. With experience in data-driven decision-making, SQL automation, and machine learning, I am eager to contribute to a team focused on innovation and operational excellence.</p>
+            </section>
+            
+            <section>
+                <h2>Core Competencies</h2>
+                <div class="competencies">
+                    <div class="competency-card">
+                        <div class="competency-title">Technical Tools</div>
+                        <ul class="competency-list">
+                            <li>Python, R, SQL</li>
+                            <li>Flask, TensorFlow, scikit-learn</li>
+                            <li>LangChain, Looker Studio</li>
+                            <li>Excel, Tableau, Power BI</li>
+                            <li>AWS, Apache NiFi</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-title">Business & Data Skills</div>
+                        <ul class="competency-list">
+                            <li>Process Automation</li>
+                            <li>Predictive Modeling</li>
+                            <li>Data Storytelling</li>
+                            <li>Causal Inference</li>
+                            <li>Impact Evaluation</li>
+                            <li>Dashboard Design</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <div class="competency-title">Soft Skills</div>
+                        <ul class="competency-list">
+                            <li>Analytical Thinking</li>
+                            <li>Cross-Team Collaboration</li>
+                            <li>Communication</li>
+                            <li>Leadership</li>
+                            <li>Problem Solving</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Professional Experience</h2>
+                <div class="experiences">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">Kenya Revenue Authority (KRA)</div>
+                                <div class="position">Graduate Intern, Business Transformation Office</div>
+                            </div>
+                            <div class="date-location">
+                                <div>Jan 2025 – Present</div>
+                                <div>Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Automated internal reporting workflows using Python and Apache NiFi, cutting report turnaround time by 60%.</li>
+                                <li>Optimized SQL-based revenue pipelines, reducing query lag by 45%, and enabling near-real-time insights.</li>
+                                <li>Led training sessions on automation tools, enhancing intern team productivity by 30%.</li>
+                                <li>Collaborated with developers and tax professionals to design and implement digitized compliance solutions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">Kenya Commercial Bank (KCB)</div>
+                                <div class="position">Intern, Customer & Product Management</div>
+                            </div>
+                            <div class="date-location">
+                                <div>June – Aug 2024</div>
+                                <div>Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Increased merchant acquisition by 25% through process mapping and improved POS onboarding documentation.</li>
+                                <li>Developed Excel VBA tools to automate customer support workflows, cutting issue resolution time by 50%.</li>
+                                <li>Built and presented performance dashboards to senior management using Power BI and Excel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">East Africa Reinsurance</div>
+                                <div class="position">Data Intern</div>
+                            </div>
+                            <div class="date-location">
+                                <div>Apr – May 2024</div>
+                                <div>Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Designed a desktop GUI tool to automate actuarial computations, improving productivity by 60%.</li>
+                                <li>Implemented ISO-compliant data quality checks, reducing manual validation by 70%.</li>
+                                <li>Digitized administrative forms using KoboToolbox, enhancing operational efficiency.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">Kenya Forest Service</div>
+                                <div class="position">Data Analyst Intern</div>
+                            </div>
+                            <div class="date-location">
+                                <div>June – Sept 2023</div>
+                                <div>Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Developed interactive dashboards to monitor forest regeneration, influencing environmental policy planning.</li>
+                                <li>Performed cost-benefit analysis of reforestation projects, supporting alignment with national SDGs.</li>
+                                <li>Facilitated peer learning workshops, improving intern data proficiency.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <div class="company">That's My Story Enterprises</div>
+                                <div class="position">Sales Associate (Part-Time)</div>
+                            </div>
+                            <div class="date-location">
+                                <div>Jan – Aug 2020</div>
+                                <div>Nairobi</div>
+                            </div>
+                        </div>
+                        <div class="experience-content">
+                            <ul>
+                                <li>Streamlined shift operations and transitioned point-of-sale systems to contactless payment.</li>
+                                <li>Boosted inventory efficiency through real-time restocking audits using Excel tools.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Added page break for better PDF layout -->
+            <div class="page-break-before"></div>
+            
+            <section>
+                <h2>Selected Projects</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <div class="project-title">Automating SQL Scripts Generation</div>
+                        <div class="project-description">
+                            Developed an automated framework for generating SQL scripts, improving efficiency and reducing human error in complex database operations.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">Ticket Categorization Automation</div>
+                        <div class="project-description">
+                            Built and deployed an automated system that categorizes incoming tickets using a combination of rule-based logic and machine learning models, reducing manual categorization time by 70%.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">Automated Attendance Collection with Flask</div>
+                        <div class="project-description">
+                            Designed and implemented a Flask web app to automate attendance tracking. The app integrates with Excel on the backend, automatically populates attendance data, and sends weekly reports via email using LangChain for message crafting.
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-title">Causal Machine Learning Projects</div>
+                        <div class="project-description">
+                            Led several causal inference projects, utilizing advanced machine learning models to understand the impact of various factors on business outcomes. These projects are available in a dedicated folder on my GitHub.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Education & Certifications</h2>
+                <div class="education-certifications">
+                    <div class="education-card">
+                        <div class="education-title">BSc. Economics and Mathematics</div>
+                        <div class="institution">Kabarak University</div>
+                        <div class="education-date">2024</div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-title">TensorFlow Developer Professional</div>
+                        <div class="certification-issuer">Coursera</div>
+                        <div class="certification-date">2025</div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-title">Advanced Data Analytics</div>
+                        <div class="certification-issuer">Coursera</div>
+                        <div class="certification-date">2024</div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-title">AWS Certified Cloud Practitioner</div>
+                        <div class="certification-issuer">AWS</div>
+                        <div class="certification-date">2022</div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-title">Business Intelligence Specialization</div>
+                        <div class="certification-issuer">Coursera</div>
+                        <div class="certification-date">2024</div>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <div class="certification-title">CFA Research Challenge</div>
+                        <div class="certification-issuer">National Finalist</div>
+                        <div class="certification-date">2024</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Leadership & Volunteering</h2>
+                <div class="leadership">
+                    <div class="leadership-card">
+                        <div class="leadership-title">Treasurer</div>
+                        <div class="leadership-org">Stepping Stone Foundation</div>
+                        <div class="leadership-date">2020–Present</div>
+                        <p>Managed financial reporting for outreach and school return programs; supported over 100 children.</p>
+                    </div>
+                    
+                    <div class="leadership-card">
+                        <div class="leadership-title">Data Analyst</div>
+                        <div class="leadership-org">Statistics Without Borders</div>
+                        <div class="leadership-date">2023–Present</div>
+                        <p>Conducted survey design, data cleaning, and statistical reporting for global mental health and STEM initiatives.</p>
+                    </div>
+                    
+                    <div class="leadership-card">
+                        <div class="leadership-title">Econometrician</div>
+                        <div class="leadership-org">Kenya Economics Students Association (KESA)</div>
+                        <div class="leadership-date">2022–2024</div>
+                        <p>Spearheaded econometric analyses for policy roundtables and academic forums.</p>
+                    </div>
+                    
+                    <div class="leadership-card">
+                        <div class="leadership-title">Commissioner</div>
+                        <div class="leadership-org">Kabarak Business School Elections Board</div>
+                        <div class="leadership-date">2023–2024</div>
+                        <p>Digitized voter registration and implemented transparent electronic vote tracking.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <p>Portfolio & Additional Projects</p>
+                <p><a href="https://github.com/aueskinj" target="_blank">github.com/aueskinj</a></p>
+                <p><small>Features SQL automation tools, machine learning ticket categorization, causal inference notebooks, Flask attendance system, and other data science projects.</small></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
