@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-20 space-y-10">
+  <section class="space-y-3">
+    <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">Projects</p>
+    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">All repositories</h1>
+    <p class="text-slate-600 dark:text-slate-400">Every repo from public_repos.json, including forks with planned changes.</p>
+  </section>
+
+  <section class="space-y-4">
+    {% for repo in posts %}
+    <article class="p-5 rounded-lg border border-primary/10 bg-primary/5 hover:border-primary/30 transition">
+      <div class="flex items-center gap-2 mb-2 flex-wrap">
+        <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ repo.language | upper }}</span>
+        {% if repo.fork %}<span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">FORK</span>{% endif %}
+        {% for topic in repo.topics[:3] %}
+        <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ topic | upper }}</span>
+        {% endfor %}
+      </div>
+      <div class="flex items-start justify-between gap-3">
+        <div class="space-y-2">
+          {% set detail_slug = pinned_map.get(repo.name) %}
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white"><a href="{{ root_prefix }}/{{ 'pinned/' ~ detail_slug if detail_slug else 'posts/' ~ repo.slug }}/index.html">{{ repo.name }}</a></h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{{ repo.summary }}</p>
+          {% if repo.fork and repo.plan %}
+          <p class="text-slate-500 text-xs">Plan: {{ repo.plan }}</p>
+          {% endif %}
+          <div class="text-slate-500 text-sm">Updated {{ repo.updated_label }} • ⭐ {{ repo.stars }}</div>
+        </div>
+        <a class="text-slate-400 hover:text-white" href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">
+          <span class="material-icons-round">open_in_new</span>
+        </a>
+      </div>
+    </article>
+    {% else %}
+    <p class="text-slate-500">No repositories found.</p>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

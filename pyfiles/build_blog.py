@@ -29,6 +29,151 @@ ASSETS_SRC = ROOT / "assets"
 MEDIUM_PATH = ROOT / "medium.txt"
 
 
+PINNED_CONTENT = {
+        "RAG": {
+                "title": "RAG notebook deep dive",
+                "description": "LangChain-powered RAG notebook with FAISS, FLAN-T5, MiniLM embeddings, PDF ingestion, and conversational memory.",
+                "body_html": """
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Technologies Used</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li><strong>LangChain</strong>: Chains the document loaders, splitters, vector store, and LLM.</li>
+        <li><strong>Hugging Face (Transformers &amp; Embeddings)</strong>: <em>google/flan-t5-large</em> for generation; <em>sentence-transformers/all-MiniLM-L6-v2</em> for embeddings.</li>
+        <li><strong>FAISS</strong>: Vector database for fast semantic search over chunks.</li>
+        <li><strong>PyMuPDF</strong>: Parses uploaded PDFs into text.</li>
+        <li><strong>PyTorch</strong>: Backend for the Hugging Face models.</li>
+        <li><strong>ipywidgets</strong>: Interactive UI inside the notebook.</li>
+    </ul>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Notebook Flow</h2>
+    <ol class=\"list-decimal pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li><strong>Setup</strong>: Installs dependencies, detects GPU.</li>
+        <li><strong>Data Ingestion</strong>: Uploads a PDF and splits text with <code>RecursiveCharacterTextSplitter</code>.</li>
+        <li><strong>Vector Database</strong>: Embeds chunks and stores them in FAISS.</li>
+        <li><strong>Model Initialization</strong>: Loads <em>flan-t5-large</em> and creates a text-generation pipeline.</li>
+        <li><strong>Basic RAG</strong>: Retrieves context and answers single-turn questions.</li>
+        <li><strong>Conversational Memory</strong>: Rewrites follow-ups into standalone questions to keep chat history coherent.</li>
+        <li><strong>Final Interface</strong>: Chat UI showing responses plus history.</li>
+    </ol>
+</section>
+""",
+        },
+        "Data-Science-Projects": {
+                "title": "Data Science Projects notebook set",
+                "description": "Collection of data science notebooks spanning EDA, translation, scraping, classical ML, and causal analysis.",
+                "body_html": """
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Technologies Used</h2>
+    <p class=\"text-slate-700 dark:text-slate-300\">Python notebooks across analytics and ML; typical stack includes pandas, numpy, seaborn/matplotlib, scikit-learn, TensorFlow/Keras (for translation), BeautifulSoup (for scraping).</p>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Notebook Breakdown</h2>
+    <ol class=\"list-decimal pl-5 space-y-4 text-slate-700 dark:text-slate-300\">
+        <li><strong>Student Performance Indicator</strong> — EDA through model selection; walks the ML lifecycle from problem framing to training and choosing the best model.</li>
+        <li><strong>Effect of Government Social Programs on Poverty in Kenya</strong> — Descriptive analytics and correlations to understand program impact.</li>
+        <li><strong>Effect of Petroleum Prices on Demand in Kenya</strong> — Correlation and descriptive analysis of price changes vs demand.</li>
+        <li><strong>Effect of Taxation on SME Performance</strong> — Frequency analysis plus descriptive analytics on taxation effects.</li>
+        <li><strong>Fine-Tuning English-Swahili Translation Model</strong> — Deep-learning fine-tuning using TensorFlow/Keras and CIFAR-10 style preprocessing.</li>
+        <li><strong>Lyrics Finder</strong> — Scrapes Genius.com to gather song lyrics (URL collection + HTML parsing).</li>
+        <li><strong>English-Kiswahili Translation Notebook</strong> — GPU-backed fine-tuning for translation tasks.</li>
+        <li><strong>PandemAI</strong> — Data cleaning and formatting pipeline preparation.</li>
+        <li><strong>Supervised Learning with SVM</strong> — Implements and evaluates SVM models.</li>
+        <li><strong>Supervised Learning with Random Forests</strong> — Attribute selection, training, and evaluation with confusion matrices.</li>
+        <li><strong>Customer Churn Prediction</strong> — Feature engineering plus multiple classifiers (RF, AdaBoost, SVC, XGBoost) compared via accuracy and reports.</li>
+        <li><strong>Causal Inference with Bayesian Networks</strong> — Bayesian causal analysis (as listed in the contents).</li>
+    </ol>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Getting Started</h2>
+    <p class=\"text-slate-700 dark:text-slate-300\">Each notebook is runnable in Google Colab via the provided links in the repository; prerequisites include Python 3.x plus common data/ML libraries (TensorFlow, Keras, Matplotlib, Seaborn, NumPy, scikit-learn, BeautifulSoup, pandas, etc.).</p>
+</section>
+""",
+        },
+        "KiteGame": {
+                "title": "KiteGame (pivot from Beach Buggy)",
+                "description": "Flask + SocketIO real-time kite/buggy prototype with tests-in-progress and a playful roadmap of issues.",
+                "body_html": """
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">What the Project Is</h2>
+    <p class=\"text-slate-700 dark:text-slate-300\">Started as Beach Buggy Racing and pivoted into a Kite Flying simulator. Expect lingering <code>BeachBuggy</code> classes and sand-related variables while the kite physics take shape.</p>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Tech Stack</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li><strong>Python 3.x</strong></li>
+        <li><strong>Flask + SocketIO</strong> for real-time transport</li>
+        <li><strong>Eventlet</strong> for monkey patching</li>
+        <li><strong>HTML5 Canvas</strong> + JavaScript for rendering</li>
+        <li><strong>Tests</strong>: pytest-centric TDD mindset (coverage aspirational)</li>
+    </ul>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Known Issues / TODOs</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li>Duplicated classes from copy/paste.</li>
+        <li>Level progression can freeze the (kite-formerly-car).</li>
+        <li>Event system exists but is not wired through gameplay.</li>
+        <li>Physics and wind feel unfinished; promises/async confusion noted.</li>
+        <li>Tests exist but are incomplete; focus is on making them pass.</li>
+    </ul>
+    <p class=\"text-slate-700 dark:text-slate-300\">See the repository issues for the full backlog and humor-laced context.</p>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">How to Run</h2>
+    <pre class=\"p-4 rounded bg-primary/10 text-slate-800 dark:text-slate-200 text-sm overflow-x-auto\">git clone https://github.com/aueskinj/KiteGame.git
+cd KiteGame
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py</pre>
+    <p class=\"text-slate-700 dark:text-slate-300\">Navigate to <code>http://localhost:5000</code> to see the prototype; pytest commands are provided in the README for test runs and coverage.</p>
+</section>
+""",
+        },
+        "web_crawler": {
+                "title": "Async Web Crawler API",
+                "description": "FastAPI + HTTPX crawler with Beautiful Soup parsing, image extraction variant, and domain-constrained crawling.",
+                "body_html": """
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Technologies Used</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li><strong>FastAPI</strong> exposes <code>/crawl</code> and root endpoints with automatic docs.</li>
+        <li><strong>Pydantic</strong> validates request/response models (e.g., <code>CrawlRequest</code>, <code>PageData</code>).</li>
+        <li><strong>HTTPX</strong> handles async fetching.</li>
+        <li><strong>Beautiful Soup</strong> parses HTML for titles, links, and images.</li>
+        <li><strong>asyncio</strong> manages batched concurrency and depth/host limits.</li>
+    </ul>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Repository Layout</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li><strong>main.py</strong>: Core crawler with FastAPI; extracts URL, title, status, depth, link count.</li>
+        <li><strong>data.py</strong>: Enhanced variant adding <code>ImageData</code> plus <code>extract_images</code> for image metadata.</li>
+        <li><strong>README.md</strong>: Brief project description.</li>
+    </ul>
+</section>
+
+<section class=\"space-y-3\">
+    <h2 class=\"text-2xl font-bold text-slate-900 dark:text-white\">Key Behaviors</h2>
+    <ul class=\"list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300\">
+        <li>Batched async crawling via <code>asyncio.gather</code> (default batch size 5).</li>
+        <li>Optional same-domain restriction to stay within the starting host.</li>
+        <li>Image scraping path for richer responses when using <code>data.py</code>.</li>
+    </ul>
+</section>
+""",
+        },
+}
+
+
 @dataclass
 class RepoPost:
     slug: str
@@ -248,7 +393,26 @@ def build_site() -> None:
     repos = load_repos()
     repos.sort(key=lambda r: r.sort_key, reverse=True)
     medium_posts = parse_medium_posts()
-    featured = sorted(repos, key=lambda r: (r.stars, r.sort_key), reverse=True)[:3]
+    pinned_order = ["Data-Science-Projects", "KiteGame", "web_crawler", "RAG"]
+    pinned_lookup = {r.name: r for r in repos}
+    pinned = [pinned_lookup[name] for name in pinned_order if name in pinned_lookup]
+    featured = pinned if pinned else sorted(repos, key=lambda r: (r.stars, r.sort_key), reverse=True)[:3]
+
+    pinned_pages = []
+    for repo in repos:
+        detail = PINNED_CONTENT.get(repo.name)
+        if not detail:
+            continue
+        pinned_pages.append(
+            {
+                "repo": repo,
+                "title": detail["title"],
+                "description": detail["description"],
+                "body_html": detail["body_html"],
+            }
+        )
+
+    pinned_map = {page["repo"].name: page["repo"].slug for page in pinned_pages}
 
     ensure_output_dir()
     copy_assets()
@@ -281,10 +445,26 @@ def build_site() -> None:
             "posts": repos,
             "stats": stats,
             "medium_posts": medium_posts[:3],
+            "pinned_map": pinned_map,
             "root_prefix": ".",
             "generated_at": generated_at,
         },
         OUTPUT_DIR / "index.html",
+    )
+
+    # Projects page (all repos)
+    render(
+        env,
+        "projects.html",
+        {
+            "title": "Projects",
+            "description": "All repositories and forks",
+            "posts": repos,
+            "pinned_map": pinned_map,
+            "root_prefix": "..",
+            "generated_at": generated_at,
+        },
+        OUTPUT_DIR / "projects" / "index.html",
     )
 
     # Tags index
@@ -326,10 +506,27 @@ def build_site() -> None:
                 "title": repo.name,
                 "description": repo.summary,
                 "repo": repo,
+                "pinned_map": pinned_map,
                 "root_prefix": "../..",
                 "generated_at": generated_at,
             },
             OUTPUT_DIR / "posts" / repo.slug / "index.html",
+        )
+
+    # Dedicated pages for pinned projects
+    for page in pinned_pages:
+        render(
+            env,
+            "pinned.html",
+            {
+                "title": page["title"],
+                "description": page["description"],
+                "repo": page["repo"],
+                "body_html": page["body_html"],
+                "root_prefix": "../..",
+                "generated_at": generated_at,
+            },
+            OUTPUT_DIR / "pinned" / page["repo"].slug / "index.html",
         )
 
     print(f"Built {len(repos)} posts into {OUTPUT_DIR}")

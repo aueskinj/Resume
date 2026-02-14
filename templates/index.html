@@ -1,20 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<header class="sticky top-0 z-50 border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
-  <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <span class="w-8 h-8 rounded bg-primary flex items-center justify-center text-background-dark font-bold text-lg">A</span>
-      <span class="font-semibold text-slate-900 dark:text-white tracking-tight">Austin Kimuhu Njuguna</span>
-    </div>
-    <div class="flex items-center gap-6 text-sm font-medium">
-      <a class="hover:text-primary transition-colors" href="#projects">Projects</a>
-      <a class="hover:text-primary transition-colors" href="#blog">Blog</a>
-      <a class="hover:text-primary transition-colors" href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
-
-<main class="max-w-3xl mx-auto px-6 py-20 space-y-24">
+<main class="max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-20 space-y-24">
   <!-- Hero -->
   <section class="space-y-6">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">
@@ -46,7 +32,7 @@
     <div class="flex items-center justify-between">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
         <span class="w-8 h-[1px] bg-primary/30"></span>
-        Selected Projects
+        Awesome Projects
       </h2>
       <a class="text-sm text-primary hover:underline font-medium" href="https://github.com/aueskinj" target="_blank" rel="noreferrer noopener">View all on GitHub</a>
     </div>
@@ -55,8 +41,9 @@
       <div class="group relative p-6 rounded-lg border border-primary/10 bg-primary/5 hover:border-primary/30 transition-all">
         <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div class="space-y-2">
+            {% set detail_slug = pinned_map.get(repo.name) %}
             <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
-              <a href="{{ root_prefix }}/posts/{{ repo.slug }}/index.html">{{ repo.name }}</a>
+              <a href="{{ root_prefix }}/{{ 'pinned/' ~ detail_slug if detail_slug else 'posts/' ~ repo.slug }}/index.html">{{ repo.name }}</a>
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-xl">{{ repo.summary }}</p>
             <div class="flex flex-wrap gap-2 pt-2">

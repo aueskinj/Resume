@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 md:px-8 py-16 space-y-12">
+  <div class="flex items-center justify-between">
+    <a class="text-sm text-primary hover:underline font-medium" href="{{ root_prefix }}/index.html">← Back to home</a>
+    <div class="flex items-center gap-4 text-sm text-slate-500">
+      <a class="hover:text-primary" href="{{ root_prefix }}/projects/index.html">Projects</a>
+      <a class="hover:text-primary" href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">GitHub</a>
+    </div>
+  </div>
+
+  <header class="space-y-3">
+    <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">Pinned Project</p>
+    <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">{{ title }}</h1>
+    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">{{ description }}</p>
+    <div class="flex flex-wrap gap-2 pt-2">
+      <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ repo.language | upper }}</span>
+      {% if repo.fork %}<span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">FORK</span>{% endif %}
+      {% for topic in repo.topics %}
+      <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ topic | upper }}</span>
+      {% endfor %}
+    </div>
+  </header>
+
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 rounded-lg border border-primary/10 bg-primary/5">
+      <div class="text-xs text-slate-500">Repository</div>
+      <div class="text-slate-800 dark:text-slate-200"><a href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">{{ repo.full_name }}</a></div>
+    </div>
+    <div class="p-4 rounded-lg border border-primary/10 bg-primary/5">
+      <div class="text-xs text-slate-500">Default branch</div>
+      <div class="text-slate-800 dark:text-slate-200">{{ repo.default_branch }}</div>
+    </div>
+    <div class="p-4 rounded-lg border border-primary/10 bg-primary/5">
+      <div class="text-xs text-slate-500">Last pushed</div>
+      <div class="text-slate-800 dark:text-slate-200">{{ repo.pushed_label }}</div>
+    </div>
+  </section>
+
+  <article class="prose prose-slate dark:prose-invert max-w-none">
+    {{ body_html | safe }}
+  </article>
+
+  <section class="p-6 rounded-xl bg-primary/5 border border-primary/20 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+    <div>
+      <div class="text-sm text-slate-500">Need more detail?</div>
+      <div class="text-lg font-semibold text-slate-900 dark:text-white">Happy to walk through the implementation or roadmap.</div>
+    </div>
+    <div class="flex gap-3">
+      <a class="bg-primary text-background-dark px-5 py-2 rounded font-bold hover:bg-primary/90 transition-all" href="mailto:aueskinj@users.noreply.github.com">Email me</a>
+      <a class="border border-primary/40 text-primary px-5 py-2 rounded font-semibold hover:border-primary/60 transition-all" href="https://www.linkedin.com/in/aueskinj" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+    </div>
+  </section>
+</div>
+{% endblock %}
