@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-6 py-16 space-y-8">
+  <section class="space-y-3">
+    <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">Tags</p>
+    <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Browse by language or topic</h1>
+    <p class="text-slate-600 dark:text-slate-400">Click a tag to see all related repositories.</p>
+  </section>
+
+  <div class="flex flex-wrap gap-3">
+    {% for tag in tags %}
+    <a class="px-4 py-2 rounded-lg border border-primary/10 bg-primary/5 text-slate-800 dark:text-slate-200 hover:border-primary/40 transition" href="{{ root_prefix }}/tags/{{ tag.slug }}/index.html">{{ tag.name }} ({{ tag.count }})</a>
+    {% else %}
+    <p class="text-slate-500">No tags found.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

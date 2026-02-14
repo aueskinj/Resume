@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="sticky top-0 z-50 border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+  <nav class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded bg-primary flex items-center justify-center text-background-dark font-bold text-lg">A</span>
+      <span class="font-semibold text-slate-900 dark:text-white tracking-tight">Austin Kimuhu Njuguna</span>
+    </div>
+    <div class="flex items-center gap-6 text-sm font-medium">
+      <a class="hover:text-primary transition-colors" href="#projects">Projects</a>
+      <a class="hover:text-primary transition-colors" href="#blog">Blog</a>
+      <a class="hover:text-primary transition-colors" href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="max-w-3xl mx-auto px-6 py-20 space-y-24">
+  <!-- Hero -->
+  <section class="space-y-6">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">
+      <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+      Available for complex backend challenges
+    </div>
+    <div class="space-y-3">
+      <h1 class="text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+        Python & Data Engineer<br />
+        <span class="text-primary/80">Building resilient, high-scale systems</span>
+      </h1>
+      <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+        Focused on APIs, distributed pipelines, and ML-adjacent tooling—with clear docs, CI, and tests baked in. Below are live projects (with fork plans) and the latest writing from my Medium feed.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a class="bg-primary hover:bg-primary/90 text-background-dark font-semibold px-6 py-2.5 rounded transition-all flex items-center gap-2" href="#contact">
+          Get in touch
+          <span class="material-icons-round text-sm">arrow_forward</span>
+        </a>
+        <a class="border border-primary/20 hover:border-primary/50 text-slate-700 dark:text-slate-300 px-6 py-2.5 rounded transition-all" href="https://github.com/aueskinj" target="_blank" rel="noreferrer noopener">
+          View GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Projects -->
+  <section id="projects" class="space-y-8">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+        <span class="w-8 h-[1px] bg-primary/30"></span>
+        Selected Projects
+      </h2>
+      <a class="text-sm text-primary hover:underline font-medium" href="https://github.com/aueskinj" target="_blank" rel="noreferrer noopener">View all on GitHub</a>
+    </div>
+    <div class="space-y-6">
+      {% for repo in featured %}
+      <div class="group relative p-6 rounded-lg border border-primary/10 bg-primary/5 hover:border-primary/30 transition-all">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+              <a href="{{ root_prefix }}/posts/{{ repo.slug }}/index.html">{{ repo.name }}</a>
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed max-w-xl">{{ repo.summary }}</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="mono text-[10px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ repo.language | upper }}</span>
+              {% if repo.fork %}<span class="mono text-[10px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">FORK</span>{% endif %}
+              {% for topic in repo.topics[:3] %}
+              <span class="mono text-[10px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ topic | upper }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          <a class="text-slate-400 hover:text-white" href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">
+            <span class="material-icons-round">open_in_new</span>
+          </a>
+        </div>
+      </div>
+      {% else %}
+      <p class="text-slate-500">No repositories found in public_repos.json.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Recent Articles -->
+  <section id="blog" class="space-y-6">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+      <span class="w-8 h-[1px] bg-primary/30"></span>
+      Recent Articles
+    </h2>
+    <div class="divide-y divide-primary/10">
+      {% for post in medium_posts %}
+      <article class="py-6 first:pt-0 group cursor-pointer">
+        <div class="flex items-center gap-4 text-xs font-mono text-slate-500 mb-2">
+          <span>{{ post.published_label }}</span>
+          <span>•</span>
+          <span>{{ post.tags | join(' · ') if post.tags else 'Medium' }}</span>
+        </div>
+        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 group-hover:text-primary transition-colors mb-2 leading-snug">
+          <a href="{{ post.link }}" target="_blank" rel="noreferrer noopener">{{ post.title }}</a>
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2">
+          {{ post.tags | join(' • ') if post.tags else 'Medium article from my feed' }}
+        </p>
+      </article>
+      {% else %}
+      <p class="text-slate-500">No Medium posts found. Add entries to medium.txt to show them here.</p>
+      {% endfor %}
+    </div>
+    <div class="mt-4">
+      <a class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" href="https://medium.com/@austinkmhi" target="_blank" rel="noreferrer noopener">
+        Read more articles
+        <span class="material-icons-round text-sm">arrow_outward</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="p-8 rounded-xl bg-primary/5 border border-primary/20 text-center space-y-4">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Work with me</h2>
+    <p class="text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+      Open to backend, data, and ML-adjacent projects—especially where reliability and clarity matter.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a class="bg-primary text-background-dark px-8 py-3 rounded font-bold hover:bg-primary/90 transition-all flex items-center gap-2" href="mailto:aueskinj@users.noreply.github.com">
+        <span class="material-icons-round text-sm">email</span>
+        Email Me
+      </a>
+      <a class="bg-slate-800 text-white px-8 py-3 rounded font-bold hover:bg-slate-700 transition-all flex items-center gap-2" href="https://www.linkedin.com/in/aueskinj" target="_blank" rel="noreferrer noopener">
+        <span class="material-icons-round text-sm">alternate_email</span>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-primary/10 py-12 bg-background-light dark:bg-background-dark">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-sm text-slate-500 font-mono">
+        © {{ generated_at }} Austin Kimuhu Njuguna. Built with Python & Integrity.
+      </div>
+      <div class="flex items-center gap-6">
+        <a class="text-slate-500 hover:text-primary transition-colors text-sm font-mono flex items-center gap-1" href="https://github.com/aueskinj" target="_blank" rel="noreferrer noopener">GITHUB</a>
+        <a class="text-slate-500 hover:text-primary transition-colors text-sm font-mono flex items-center gap-1" href="https://twitter.com" target="_blank" rel="noreferrer noopener">TWITTER</a>
+        <a class="text-slate-500 hover:text-primary transition-colors text-sm font-mono flex items-center gap-1" href="https://medium.com/@austinkmhi" target="_blank" rel="noreferrer noopener">MEDIUM</a>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

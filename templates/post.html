@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-3xl mx-auto px-6 py-16 space-y-10">
+  <div class="flex items-center justify-between">
+    <a class="text-sm text-primary hover:underline font-medium" href="{{ root_prefix }}/index.html">← Back to home</a>
+    <a class="text-sm text-slate-500 hover:text-primary" href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">View on GitHub</a>
+  </div>
+
+  <article class="space-y-4">
+    <p class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">Repository</p>
+    <h1 class="text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">{{ repo.name }}</h1>
+    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">{{ repo.description }}</p>
+    <div class="flex flex-wrap gap-2 pt-2">
+      <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ repo.language | upper }}</span>
+      {% if repo.fork %}<span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">FORK</span>{% endif %}
+      {% for topic in repo.topics %}
+      <span class="mono text-[11px] px-2 py-0.5 rounded border border-primary/20 bg-primary/5 text-primary">{{ topic | upper }}</span>
+      {% endfor %}
+    </div>
+  </article>
+
+  {% if repo.fork %}
+  <section class="space-y-2">
+    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Planned changes</h2>
+    <p class="text-slate-600 dark:text-slate-400">{{ repo.plan }}</p>
+  </section>
+  {% endif %}
+
+  <section class="space-y-2">
+    <h2 class="text-xl font-bold text-slate-900 dark:text-white">About this project</h2>
+    <p class="text-slate-600 dark:text-slate-400">{{ repo.summary }}</p>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-bold text-slate-900 dark:text-white">Metadata</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">GitHub</div>
+        <div class="text-slate-800 dark:text-slate-200"><a href="{{ repo.html_url }}" target="_blank" rel="noreferrer noopener">{{ repo.full_name }}</a></div>
+      </div>
+      {% if repo.homepage %}
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Homepage</div>
+        <div class="text-slate-800 dark:text-slate-200"><a href="{{ repo.homepage }}" target="_blank" rel="noreferrer noopener">{{ repo.homepage }}</a></div>
+      </div>
+      {% endif %}
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Default branch</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.default_branch }}</div>
+      </div>
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Created</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.created_label }}</div>
+      </div>
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Updated</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.updated_label }}</div>
+      </div>
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Pushed</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.pushed_label }}</div>
+      </div>
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Stars</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.stars }}</div>
+      </div>
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Forks</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.forks_count }}</div>
+      </div>
+      {% if repo.license %}
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">License</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.license }}</div>
+      </div>
+      {% endif %}
+      {% if repo.topics %}
+      <div class="p-3 rounded border border-primary/10 bg-primary/5">
+        <div class="text-xs text-slate-500">Topics</div>
+        <div class="text-slate-800 dark:text-slate-200">{{ repo.topics | join(', ') }}</div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% endblock %}
