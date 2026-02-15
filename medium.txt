@@ -1,0 +1,40 @@
+Title: Principal Nested Submanifolds: How to peel an onion in 30,000 dimensions
+Link: https://medium.com/@austinkmhi/principal-nested-submanifolds-how-to-peel-an-onion-in-30-000-dimensions-5d2262731f2b?source=rss-b105041949d2------2
+Date: Fri, 19 Dec 2025 13:16:15 GMT
+Tags: None
+---
+Title: Stop Flattening Your Data Like a Pancake: The Manifold Fitting Revolution
+Link: https://medium.com/@austinkmhi/stop-flattening-your-data-like-a-pancake-the-manifold-fitting-revolution-4c68674830b1?source=rss-b105041949d2------2
+Date: Tue, 16 Dec 2025 14:02:46 GMT
+Tags: ['statistics', 'pca-analysis', 'data-science']
+---
+Title: What’s New in Python 3.13: Unlocking Speed, Concurrency & Developer Joy
+Link: https://medium.com/@austinkmhi/whats-new-in-python-3-13-unlocking-speed-concurrency-developer-joy-03a80486afa6?source=rss-b105041949d2------2
+Date: Thu, 09 Oct 2025 11:07:00 GMT
+Tags: None
+---
+Title: Beware the Ghost in the Machine: The Rise of Indirect Prompt Injection]
+Link: https://medium.com/@austinkmhi/beware-the-ghost-in-the-machine-the-rise-of-indirect-prompt-injection-daba9dc4b0b9?source=rss-b105041949d2------2
+Date: Fri, 28 Feb 2025 07:03:57 GMT
+Tags: ['prompt-injection-attack', 'ai', 'llm']
+---
+Title: DeepSeek & The AI Revolution: A Novice’s Perspective on What’s Next
+Link: https://medium.com/@austinkmhi/deepseek-the-ai-revolution-a-novices-perspective-on-what-s-next-07d46fb2c44c?source=rss-b105041949d2------2
+Date: Thu, 13 Feb 2025 07:22:11 GMT
+Tags: ['multitoken', 'kv-cache-quantization', 'multihead-attention', 'deepseek', 'mixture-of-experts']
+---
+Title: Correlation ≠ Causation: Enter Causal Bayesian Networks
+Link: https://medium.com/@austinkmhi/correlation-causation-enter-causal-bayesian-networks-64f0a783ce6a?source=rss-b105041949d2------2
+Date: Tue, 19 Nov 2024 14:50:22 GMT
+Tags: ['data-science', 'econometrics', 'bayesian-networks', 'causal-data-science', 'causality']
+---
+Title: Correlation ≠ Causation: The Next Step in Understanding Data Relationships
+Link: https://medium.com/@austinkmhi/correlation-causation-the-next-step-in-understanding-data-relationships-254a491c54fb?source=rss-b105041949d2------2
+Date: Thu, 07 Nov 2024 05:02:10 GMT
+Tags: ['econometrics', 'causal-inference', 'causation', 'statistics', 'data-science']
+---
+Title: Correlation ≠ Causation: The Hidden Truths Behind Data Interpretation
+Link: https://medium.com/@austinkmhi/correlation-causation-the-hidden-truths-behind-data-interpretation-b68e4962061d?source=rss-b105041949d2------2
+Date: Mon, 28 Oct 2024 10:14:52 GMT
+Tags: ['statistics', 'data-science', 'econometrics', 'artificial-intelligence', 'causal-inference']
+---

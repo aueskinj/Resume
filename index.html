@@ -1,37 +1,31 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>aueskinj :: terminal-portfolio</title>
-    <meta name="description" content="An animation-rich, terminal-style exploration of Austin Kimuhu Njuguna’s projects, forks, and tinkering." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <div id="crt" aria-hidden="true"></div>
-    <canvas id="matrix" aria-hidden="true"></canvas>
-    <main class="viewport">
-      <section class="terminal" aria-label="Interactive terminal portfolio">
-        <img src="assets/image-removebg-preview.png" alt="Austin avatar" class="avatar" />
-        <div id="output" class="output" role="log" aria-live="polite"></div>
-        <form id="cmd" class="cmd" autocomplete="off">
-          <label for="cli" class="prompt">
-            <span class="user">ak</span>@<span class="host">portfolio</span>:<span class="path">~</span>$
-          </label>
-          <input id="cli" name="cli" class="cli" type="text" spellcheck="false" autofocus aria-label="Command input" />
-        </form>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>aueskinj · repository blog</title>
+  <meta name="description" content="Static blog of all my GitHub repositories" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="brand">
+        <a href="dist/index.html" class="brand-link">aueskinj</a>
+        <span class="dot">•</span>
+        <span class="tagline">generated blog</span>
+      </div>
+      <nav class="nav">
+        <a href="dist/index.html" class="nav-link">Enter blog</a>
+      </nav>
+    </header>
+    <main class="content">
+      <section class="hero hero-compact">
+        <p class="eyebrow">Static output</p>
+        <h1 class="hero-title">This site is now generated with Python.</h1>
+        <p class="hero-subtitle">Run <code>python pyfiles/build_blog.py</code> to produce dist/index.html from public_repos.json. The link above opens the generated blog if it already exists.</p>
       </section>
-      <noscript>
-        <div class="noscript">
-          <h1>aueskinj :: terminal-portfolio</h1>
-          <p>This site is an interactive terminal that lists and explores my GitHub projects. Enable JavaScript to use commands like <code>help</code>, <code>ls</code>, and <code>repo &lt;name&gt;</code>.</p>
-          <p>Meanwhile, browse my profile here: <a href="https://github.com/aueskinj" target="_blank" rel="noreferrer noopener">github.com/aueskinj</a>.</p>
-        </div>
-      </noscript>
     </main>
-    <script src="assets/js/matrix.js" defer></script>
-    <script src="assets/js/app.js" defer></script>
-  </body>
-  </html>
+  </div>
+</body>
+</html>

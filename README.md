@@ -1,71 +1,36 @@
-## Terminal Portfolio
+## Repository Blog (Static)
 
-This repository now powers an interactive, terminal-themed portfolio for **Austin Kimuhu Njuguna (aueskinj)**. Instead of a static resume, visitors explore projects, forks, experiments, and language distribution through a command-line inspired interface with animations and keyboard shortcuts.
+This repo now builds a clean, static blog that lists every public GitHub repository in `public_repos.json`. Each repo becomes its own page; forks also include a short plan for how they'll be adapted or improved.
 
-### Features
-- ASCII banner boot sequence with subtle CRT/flicker effects
-- REPL style command input with history (Up/Down) & tab autocomplete
-- Dynamic loading of `repos.json` (fetched client-side, no build step)
-- Filtering by language, fork status, and year
-- Rich repo detail view with badges, metadata, and direct GitHub link
-- ASCII bar charts for language distribution (`graph`)
-- Activity timeline (`timeline`)
-- Guided animated exploration (`explore`) with abort via Ctrl+C
-- Random repo spotlight (`random`)
-- Backend focus sections: `about`, `skills`
+### How it works
+- `pyfiles/build_blog.py` loads `public_repos.json`, normalizes the data, and renders static pages into `dist/` using Jinja templates from `templates/`.
+- Assets (CSS, images, JS) are copied into `dist/assets/` so the output can be hosted anywhere (GitHub Pages, Netlify, Cloudflare Pages).
+- The landing page `index.html` points you to `dist/index.html` once built.
 
-### Commands
-```
-help                Show help
-ls [-l]             List repositories (optionally long form)
-repo <name>         Show details of a repository (fuzzy prefix match)
-open <name>         Open a repository on GitHub in a new tab
-filter k=v [...]    Set filters (language=Python fork=true year=2025)
-filter clear        Clear all filters
-graph [lang]        ASCII language distribution
-timeline            Recent repository activity
-random              Show a random repository
-explore             Animated guided tour of highlighted repos
-about               Short personal / focus summary
-skills              Backend / tooling stack
-clear               Clear the screen
-```
-
-### Keyboard Shortcuts
-- `Tab` autocomplete repo names
-- `↑` / `↓` previous / next command history
-- `Ctrl+C` abort long-running exploration (prints ^C)
-
-### Data Source
-The file `repos.json` is expected at the project root. It should be an array of GitHub repository objects (subset of the REST API shape). Only selected fields are used: `name`, `full_name`, `html_url`, `description`, `fork`, `language`, `pushed_at`, `updated_at`, `stargazers_count`, `default_branch`, and optionally `license`.
-
-### Local Development
-No build step required; it's all static.
-
-#### Serve Locally (optional but recommended for fetch CORS behavior)
+### Build the site
 ```bash
-python3 -m http.server 8080
-# Then open http://localhost:8080
+pip install jinja2
+python pyfiles/build_blog.py
+# Outputs to dist/
 ```
 
-Or use any static server (e.g. `npx serve .`). Opening the file directly works in most browsers, though some block `fetch` of local JSON depending on settings.
+Then open `dist/index.html` in your browser or serve the folder:
+```bash
+python -m http.server --directory dist 8080
+```
 
-### Customization Ideas
-- Add a worker-based search index for full-text search across README snippets
-- Integrate pinned highlights with a `featured.json`
-- Add ASCII sparkline commit histories per repo
-- Persist filters & history in `localStorage`
-- Add dark/light themes toggled by a command (`theme dark` / `theme light`)
+### Content rules
+- **Forked repos**: pages show a "Planned changes" paragraph describing how the fork will be documented, tested, and tailored.
+- **Non-forks**: pages focus on the description and metadata only.
+- Tags are generated from languages, topics, and fork status for easy browsing.
 
-### Accessibility
-- Terminal output region uses `role=log` and `aria-live=polite`
-- Input labeled; color contrast tuned for dark backgrounds
+### Structure
+- `pyfiles/build_blog.py` — static site generator
+- `templates/` — Jinja templates (`base`, `index`, `post`, `tags`)
+- `assets/css/style.css` — blog styling
+- `public_repos.json` — source data from the GitHub API
+- `dist/` — generated output (created by the build script)
 
-### Deployment
-Host on any static hosting (GitHub Pages, Netlify, Cloudflare Pages). Ensure `repos.json` is refreshed periodically (GitHub Action or manual export).
-
-### License
-All code in this repository authored for the terminal interface is released under the MIT License unless otherwise noted. Original resume content superseded by this redesign.
-
----
-Feel free to fork and adapt for your own terminal-style portfolio.
+### Notes
+- If `public_repos.json` changes, rerun the build script to refresh `dist/`.
+- The previous terminal-style UI has been retired in favor of the blog format.
